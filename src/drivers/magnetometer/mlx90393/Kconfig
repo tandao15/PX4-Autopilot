@@ -1,0 +1,5 @@
+menuconfig DRIVERS_MAGNETOMETER_MLX90393
+	bool "mlx90393"
+	default n
+	---help---
+		Enable support for mlx90393

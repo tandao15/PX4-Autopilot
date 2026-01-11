@@ -1,0 +1,5 @@
+menuconfig DRIVERS_DISTANCE_SENSOR_MS53L2M
+	bool "ms53l2m"
+	default n
+	---help---
+		Enable support for ms53l2m
