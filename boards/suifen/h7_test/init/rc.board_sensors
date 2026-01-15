@@ -5,10 +5,10 @@
 board_adc start
 
 
-bmi088 -A -R 4 -s start -b 1
-bmi088 -G -R 4 -s start -b 1
+# bmi088 -A -R 4 -s start -b 1
+# bmi088 -G -R 4 -s start -b 1
 
-# icm42688p -R 4 -s start -b 1
+icm42688p -R 4 -S start -b 1
 
 # Barometer on I2C4
 ms5611 -X -b 4 -a 0x77 -T 5607 start
