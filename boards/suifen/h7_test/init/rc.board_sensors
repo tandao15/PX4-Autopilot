@@ -4,23 +4,13 @@
 #------------------------------------------------------------------------------
 board_adc start
 
-if ver hwtypecmp V6C000002 V6C002002
-then
-       # Internal SPI BMI088 accel/gyro
-       bmi088 -A -R 4 -s start
-       bmi088 -G -R 4 -s start
-else
-       # Internal SPI bus BMI055 accel/gyro
-       bmi055 -A -R 4 -s start
-       bmi055 -G -R 4 -s start
-fi
 
-# Internal SPI bus ICM42688p
-icm42688p -R 6 -s start
+bmi088 -A -R 4 -s start -b 1
+bmi088 -G -R 4 -s start -b 1
 
 # Barometer on I2C4
 ms5611 -X -b 4 -a 0x77 -T 5607 start
 
-ms53l2m start -d /dev/ttyS3 -R 25
+ms53l2m start -d /dev/ttyS5 -R 25
 
 mlx90393 -X -b 1  start

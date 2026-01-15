@@ -369,8 +369,8 @@
 
 /* Alternate function pin selections ************************************************/
 
-#define GPIO_USART1_RX   GPIO_USART1_RX_1    /* PA10 */
-#define GPIO_USART1_TX   GPIO_USART1_TX_1    /* PA9  */
+#define GPIO_USART1_RX   GPIO_USART1_RX_1    /* PB15 */
+#define GPIO_USART1_TX   GPIO_USART1_TX_1    /* PB14 */
 
 #define GPIO_USART2_RX   GPIO_USART2_RX_1   /* PA3   */
 #define GPIO_USART2_TX   GPIO_USART2_TX_2   /* PD5   */
@@ -378,24 +378,22 @@
 #define GPIO_USART3_RX   GPIO_USART3_RX_3   /* PD9   */
 #define GPIO_USART3_TX   GPIO_USART3_TX_3   /* PD8   */
 
+#define GPIO_UART4_RX    GPIO_UART4_RX_1    /* PA1   */
+#define GPIO_UART4_TX    GPIO_UART4_TX_1    /* PA0   */
+
 /* UART5 disabled to avoid conflict with SDMMC1 on PC8-PC12/PD2 */
-#define GPIO_UART5_RX    GPIO_UART5_RX_3    /* PD2  */
-#define GPIO_UART5_TX    GPIO_UART5_TX_3    /* PC12 */
+// #define GPIO_UART5_RX    GPIO_UART5_RX_3    /* PD2  */
+// #define GPIO_UART5_TX    GPIO_UART5_TX_3    /* PC12 */
 // GPIO_UART5_RTS   no remap                /* PC8  */
-#undef GPIO_UART5_CTS
-#define GPIO_UART5_CTS   ((GPIO_ALT|GPIO_AF8|GPIO_PORTC|GPIO_PIN9) | GPIO_PULLDOWN) /* PC9  */
-/*
-#define GPIO_UART5_RX    GPIO_UART5_RX_3    // PD2
-#define GPIO_UART5_TX    GPIO_UART5_TX_3    // PC12
-#undef GPIO_UART5_CTS
-#define GPIO_UART5_CTS   ((GPIO_ALT|GPIO_AF8|GPIO_PORTC|GPIO_PIN9) | GPIO_PULLDOWN) // PC9
-*/
+// #undef GPIO_UART5_CTS
+// #define GPIO_UART5_CTS   ((GPIO_ALT|GPIO_AF8|GPIO_PORTC|GPIO_PIN9) | GPIO_PULLDOWN) /* PC9  */
+
 
 #define GPIO_USART6_RX   GPIO_USART6_RX_1   /* PC7 */
 #define GPIO_USART6_TX   GPIO_USART6_TX_1   /* PC6  */
 
-#define GPIO_UART7_RX    GPIO_UART7_RX_3    /* PE7  */
-#define GPIO_UART7_TX    GPIO_UART7_TX_3    /* PE8  */
+#define GPIO_UART7_RX    GPIO_UART7_RX_4    /* PF6  */
+#define GPIO_UART7_TX    GPIO_UART7_TX_4    /* PF7  */
 #define GPIO_UART7_RTS   GPIO_UART7_RTS_1   /* PE9  */
 #define GPIO_UART7_CTS   (GPIO_UART7_CTS_1 | GPIO_PULLDOWN) /* PE10 */
 
@@ -452,8 +450,8 @@
 #define GPIO_I2C4_SCL (GPIO_I2C4_SCL_1 | GPIO_PULLUP)       /* PD12 */
 #define GPIO_I2C4_SDA (GPIO_I2C4_SDA_1 | GPIO_PULLUP)       /* PD13 */
 
-#define GPIO_I2C4_SCL_GPIO                  (GPIO_OUTPUT | GPIO_OPENDRAIN | GPIO_SPEED_50MHz | GPIO_OUTPUT_SET | GPIO_PORTD | GPIO_PIN12)
-#define GPIO_I2C4_SDA_GPIO                  (GPIO_OUTPUT | GPIO_OPENDRAIN | GPIO_SPEED_50MHz | GPIO_OUTPUT_SET | GPIO_PORTD | GPIO_PIN13)
+#define GPIO_I2C4_SCL_GPIO                  (GPIO_OUTPUT | GPIO_OPENDRAIN | GPIO_SPEED_50MHz | GPIO_OUTPUT_SET | GPIO_PORTD | GPIO_PIN12| GPIO_PULLUP)
+#define GPIO_I2C4_SDA_GPIO                  (GPIO_OUTPUT | GPIO_OPENDRAIN | GPIO_SPEED_50MHz | GPIO_OUTPUT_SET | GPIO_PORTD | GPIO_PIN13| GPIO_PULLUP)
 
 /* SDMMC1
  *
@@ -488,25 +486,25 @@
 #if defined(CONFIG_BOARD_USE_PROBES)
 # include "stm32_gpio.h"
 # define PROBE_N(n) (1<<((n)-1))
-# define PROBE_1    (GPIO_OUTPUT|GPIO_PUSHPULL|GPIO_SPEED_2MHz|GPIO_OUTPUT_CLEAR|GPIO_PORTA|GPIO_PIN8)   /* PA8  AUX1 */
-# define PROBE_2    (GPIO_OUTPUT|GPIO_PUSHPULL|GPIO_SPEED_2MHz|GPIO_OUTPUT_CLEAR|GPIO_PORTE|GPIO_PIN11)  /* PE11 AUX2 */
-# define PROBE_3    (GPIO_OUTPUT|GPIO_PUSHPULL|GPIO_SPEED_2MHz|GPIO_OUTPUT_CLEAR|GPIO_PORTE|GPIO_PIN13)  /* PE13 AUX3 */
-# define PROBE_4    (GPIO_OUTPUT|GPIO_PUSHPULL|GPIO_SPEED_2MHz|GPIO_OUTPUT_CLEAR|GPIO_PORTE|GPIO_PIN14)  /* PE14 AUX4 */
-# define PROBE_5    (GPIO_OUTPUT|GPIO_PUSHPULL|GPIO_SPEED_2MHz|GPIO_OUTPUT_CLEAR|GPIO_PORTD|GPIO_PIN14)  /* PD14 AUX5 */
-# define PROBE_6    (GPIO_OUTPUT|GPIO_PUSHPULL|GPIO_SPEED_2MHz|GPIO_OUTPUT_CLEAR|GPIO_PORTD|GPIO_PIN15)  /* PD15 AUX6 */
-# define PROBE_7    (GPIO_OUTPUT|GPIO_PUSHPULL|GPIO_SPEED_2MHz|GPIO_OUTPUT_CLEAR|GPIO_PORTA|GPIO_PIN0)   /* PA0  AUX7 */
-# define PROBE_8    (GPIO_OUTPUT|GPIO_PUSHPULL|GPIO_SPEED_2MHz|GPIO_OUTPUT_CLEAR|GPIO_PORTA|GPIO_PIN2)   /* PA1  AUX8 */
+// # define PROBE_1    (GPIO_OUTPUT|GPIO_PUSHPULL|GPIO_SPEED_2MHz|GPIO_OUTPUT_CLEAR|GPIO_PORTA|GPIO_PIN8)   /* PA8  AUX1 */
+// # define PROBE_2    (GPIO_OUTPUT|GPIO_PUSHPULL|GPIO_SPEED_2MHz|GPIO_OUTPUT_CLEAR|GPIO_PORTE|GPIO_PIN11)  /* PE11 AUX2 */
+// # define PROBE_3    (GPIO_OUTPUT|GPIO_PUSHPULL|GPIO_SPEED_2MHz|GPIO_OUTPUT_CLEAR|GPIO_PORTE|GPIO_PIN13)  /* PE13 AUX3 */
+// # define PROBE_4    (GPIO_OUTPUT|GPIO_PUSHPULL|GPIO_SPEED_2MHz|GPIO_OUTPUT_CLEAR|GPIO_PORTE|GPIO_PIN14)  /* PE14 AUX4 */
+// # define PROBE_5    (GPIO_OUTPUT|GPIO_PUSHPULL|GPIO_SPEED_2MHz|GPIO_OUTPUT_CLEAR|GPIO_PORTD|GPIO_PIN14)  /* PD14 AUX5 */
+// # define PROBE_6    (GPIO_OUTPUT|GPIO_PUSHPULL|GPIO_SPEED_2MHz|GPIO_OUTPUT_CLEAR|GPIO_PORTD|GPIO_PIN15)  /* PD15 AUX6 */
+// # define PROBE_7    (GPIO_OUTPUT|GPIO_PUSHPULL|GPIO_SPEED_2MHz|GPIO_OUTPUT_CLEAR|GPIO_PORTA|GPIO_PIN0)   /* PA0  AUX7 */
+// # define PROBE_8    (GPIO_OUTPUT|GPIO_PUSHPULL|GPIO_SPEED_2MHz|GPIO_OUTPUT_CLEAR|GPIO_PORTA|GPIO_PIN2)   /* PA1  AUX8 */
 
 # define PROBE_INIT(mask) \
 	do { \
-		if ((mask)& PROBE_N(1)) { stm32_configgpio(PROBE_1); } \
-		if ((mask)& PROBE_N(2)) { stm32_configgpio(PROBE_2); } \
-		if ((mask)& PROBE_N(3)) { stm32_configgpio(PROBE_3); } \
-		if ((mask)& PROBE_N(4)) { stm32_configgpio(PROBE_4); } \
-		if ((mask)& PROBE_N(5)) { stm32_configgpio(PROBE_5); } \
-		if ((mask)& PROBE_N(6)) { stm32_configgpio(PROBE_6); } \
-		if ((mask)& PROBE_N(7)) { stm32_configgpio(PROBE_7); } \
-		if ((mask)& PROBE_N(8)) { stm32_configgpio(PROBE_8); } \
+		/* if ((mask)& PROBE_N(1)) { stm32_configgpio(PROBE_1); } */ \
+		/* if ((mask)& PROBE_N(2)) { stm32_configgpio(PROBE_2); } */ \
+		/* if ((mask)& PROBE_N(3)) { stm32_configgpio(PROBE_3); } */ \
+		/* if ((mask)& PROBE_N(4)) { stm32_configgpio(PROBE_4); } */ \
+		/* if ((mask)& PROBE_N(5)) { stm32_configgpio(PROBE_5); } */ \
+		/* if ((mask)& PROBE_N(6)) { stm32_configgpio(PROBE_6); } */ \
+		/* if ((mask)& PROBE_N(7)) { stm32_configgpio(PROBE_7); } */ \
+		/* if ((mask)& PROBE_N(8)) { stm32_configgpio(PROBE_8); } */ \
 	} while(0)
 
 # define PROBE(n,s)  do {stm32_gpiowrite(PROBE_##n,(s));}while(0)

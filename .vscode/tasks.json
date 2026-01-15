@@ -294,6 +294,16 @@
                 "clear": false
             },
             "problemMatcher": []
+        },
+        {
+            "label": "jmavsim run",
+            "type": "shell",
+            "command": "export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin && unset CC CXX PKG_CONFIG_PATH PKG_CONFIG_SYSROOT_DIR && make px4_sitl_default jmavsim",
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "group": "test",
+            "problemMatcher": "$gcc"
         }
     ],
     "inputs": [

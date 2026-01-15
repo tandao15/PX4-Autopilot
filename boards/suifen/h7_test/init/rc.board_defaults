@@ -4,6 +4,21 @@
 #------------------------------------------------------------------------------
 
 
+# 覆盖默认的参数文件路径 (通常是 /fs/mtd_params)
+# 将其指向 SD 卡 (通常挂载在 /fs/microsd)
+set PARAM_FILE /fs/microsd/params
+set PARAM_BACKUP_FILE /fs/microsd/parameters_backup.bson
+
+# 关键步骤：告诉 param 系统使用新路径
+param select $PARAM_FILE
+
+# 如果里面已经有参数，重新导入一次
+if [ -f $PARAM_FILE ]
+then
+	param import
+fi
+
+
 param set-default BAT1_V_DIV 18.1
 param set-default BAT2_V_DIV 18.1
 

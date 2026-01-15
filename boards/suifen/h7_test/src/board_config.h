@@ -60,18 +60,21 @@
 
 /* PX4IO connection configuration */
 
-#define BOARD_USES_PX4IO_VERSION       2
-#define PX4IO_SERIAL_DEVICE            "/dev/ttyS4"
-#define PX4IO_SERIAL_TX_GPIO           GPIO_USART6_TX
-#define PX4IO_SERIAL_RX_GPIO           GPIO_USART6_RX
-#define PX4IO_SERIAL_BASE              STM32_USART6_BASE
-#define PX4IO_SERIAL_VECTOR            STM32_IRQ_USART6
-#define PX4IO_SERIAL_TX_DMAMAP         DMAMAP_USART6_TX
-#define PX4IO_SERIAL_RX_DMAMAP         DMAMAP_USART6_RX
-#define PX4IO_SERIAL_RCC_REG           STM32_RCC_APB2ENR
-#define PX4IO_SERIAL_RCC_EN            RCC_APB2ENR_USART6EN
-#define PX4IO_SERIAL_CLOCK             STM32_PCLK2_FREQUENCY
-#define PX4IO_SERIAL_BITRATE           1500000               /* 1.5Mbps -> max rate for IO */
+// #define BOARD_USES_PX4IO_VERSION       2
+// #define PX4IO_SERIAL_DEVICE            "/dev/ttyS4"
+// #define PX4IO_SERIAL_TX_GPIO           GPIO_USART6_TX
+// #define PX4IO_SERIAL_RX_GPIO           GPIO_USART6_RX
+// #define PX4IO_SERIAL_BASE              STM32_USART6_BASE
+// #define PX4IO_SERIAL_VECTOR            STM32_IRQ_USART6
+// #define PX4IO_SERIAL_TX_DMAMAP         DMAMAP_USART6_TX
+// #define PX4IO_SERIAL_RX_DMAMAP         DMAMAP_USART6_RX
+// #define PX4IO_SERIAL_RCC_REG           STM32_RCC_APB2ENR
+// #define PX4IO_SERIAL_RCC_EN            RCC_APB2ENR_USART6EN
+// #define PX4IO_SERIAL_CLOCK             STM32_PCLK2_FREQUENCY
+// #define PX4IO_SERIAL_BITRATE           1500000               /* 1.5Mbps -> max rate for IO */
+
+/* RC Serial Port */
+#define RC_SERIAL_PORT              "/dev/ttyS0"
 
 /* PX4FMU GPIOs ***********************************************************************************/
 
@@ -162,7 +165,7 @@
 
 /* PWM
  */
-#define DIRECT_PWM_OUTPUT_CHANNELS   8
+#define DIRECT_PWM_OUTPUT_CHANNELS   4
 
 
 /* Power supply control and monitoring GPIOs */
@@ -208,10 +211,10 @@
 #define HRT_TIMER               8  /* use timer8 for the HRT */
 #define HRT_TIMER_CHANNEL       3  /* use capture/compare channel 3 */
 
-/* PWM input driver. Use FMU AUX5 pins attached to timer4 channel 3 */
+/* PWM input driver. Use FMU AUX5 pins attached to timer4 channel 2 */
 #define PWMIN_TIMER                       4
-#define PWMIN_TIMER_CHANNEL    /* T4C3 */ 3
-#define GPIO_PWM_IN            /* PD14 */ GPIO_TIM4_CH3IN_2
+#define PWMIN_TIMER_CHANNEL    /* T4C2 */ 2
+#define GPIO_PWM_IN            /* PB7 */  GPIO_TIM4_CH2IN_1
 
 #define SDIO_SLOTNO                    0  /* Only one slot */
 #define SDIO_MINOR                     0

@@ -104,7 +104,7 @@
 #define GPIO_TONE_ALARM         GPIO_TIM2_CH1OUT_2
 
 /* USB OTG FS */
-#define GPIO_OTGFS_VBUS         /* PA9 */ (GPIO_INPUT|GPIO_PULLDOWN|GPIO_SPEED_100MHz|GPIO_PORTA|GPIO_PIN9)
+// #define GPIO_OTGFS_VBUS         /* PA9 */ (GPIO_INPUT|GPIO_PULLDOWN|GPIO_SPEED_100MHz|GPIO_PORTA|GPIO_PIN9)
 
 /* High-resolution timer */
 #define HRT_TIMER               3  /* use timer3 for the HRT */
@@ -142,7 +142,11 @@
  * this board support the ADC system_power interface, and therefore
  * provides the true logic GPIO BOARD_ADC_xxxx macros.
  */
-#define BOARD_ADC_USB_CONNECTED (px4_arch_gpioread(GPIO_OTGFS_VBUS))
+/*原来的代码*/
+// #define BOARD_ADC_USB_CONNECTED (px4_arch_gpioread(GPIO_OTGFS_VBUS))
+/* 修改为：强制认为 USB 已连接 */
+#define BOARD_ADC_USB_CONNECTED (true)
+
 #define BOARD_ADC_USB_VALID     BOARD_ADC_USB_CONNECTED
 #define BOARD_ADC_SERVO_VALID   (1) /* never powers off the Servo rail */
 #define BOARD_ADC_BRICK_VALID   (px4_arch_gpioread(GPIO_VDD_BRICK1_VALID))
