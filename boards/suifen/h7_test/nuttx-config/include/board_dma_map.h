@@ -54,13 +54,13 @@
 //#define DMAMAP_UART4_RX   DMAMAP_DMA12_UART4RX_0  /*  DMA1:63 EXT2 */
 //#define DMAMAP_UART4_TX   DMAMAP_DMA12_UART4TX_0  /*  DMA1:64 EXT2 */
 
-#define DMAMAP_USART6_RX  DMAMAP_DMA12_USART6RX_0   /* 5 DMA1:71 PX4IO */
-#define DMAMAP_USART6_TX  DMAMAP_DMA12_USART6TX_0   /* 6 DMA1:72 PX4IO */
+// #define DMAMAP_USART6_RX  DMAMAP_DMA12_USART6RX_0   /* 5 DMA1:71 PX4IO */
+// #define DMAMAP_USART6_TX  DMAMAP_DMA12_USART6TX_0   /* 6 DMA1:72 PX4IO */
 
 // Assigned in timer_config.cpp
 
 // Timer 4                                          /* 7 DMA1:32 TIM4UP */
-// Timer 5                                          /* 8 DMA1:50 TIM5UP */
+// #define DMAMAP_TIM5_UP      DMAMAP_DMA12_TIM5UP_0     /* 8 DMA1:50 TIM5UP */
 
 // DMAMUX2 Using at most 8 Channels on DMA2 --------   Assigned
 //                                                     V

@@ -18,6 +18,15 @@ then
 	param import
 fi
 
+# 默认启用 DShot600 (值为 -3)
+# 注意：在 PX4 v1.14+ 版本中，PWM_MAIN_RATE 已废弃，
+# 改为使用 PWM_MAIN_TIMx 单独配置每个定时器组的协议与速率。
+# TIM0 (Timer5, Ch1-4) -> DShot600
+param set-default PWM_MAIN_TIM0 -3
+# # TIM1 (Timer4, Ch5-6) -> DShot600
+# param set-default PWM_MAIN_TIM1 -3
+# # TIM2 (Timer1, Ch7-8) -> DShot600
+# param set-default PWM_MAIN_TIM2 -3
 
 param set-default BAT1_V_DIV 18.1
 param set-default BAT2_V_DIV 18.1

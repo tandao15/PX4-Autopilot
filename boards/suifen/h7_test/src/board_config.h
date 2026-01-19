@@ -165,7 +165,7 @@
 
 /* PWM
  */
-#define DIRECT_PWM_OUTPUT_CHANNELS   4
+#define DIRECT_PWM_OUTPUT_CHANNELS   8
 
 
 /* Power supply control and monitoring GPIOs */
@@ -211,10 +211,10 @@
 #define HRT_TIMER               8  /* use timer8 for the HRT */
 #define HRT_TIMER_CHANNEL       3  /* use capture/compare channel 3 */
 
-/* PWM input driver. Use FMU AUX5 pins attached to timer4 channel 2 */
+/* PWM input driver. Use FMU AUX5 pins attached to timer4 channel 1 */
 #define PWMIN_TIMER                       4
-#define PWMIN_TIMER_CHANNEL    /* T4C2 */ 2
-#define GPIO_PWM_IN            /* PB7 */  GPIO_TIM4_CH2IN_1
+#define PWMIN_TIMER_CHANNEL    /* T4C1 */ 1
+#define GPIO_PWM_IN            /* PB6 */  GPIO_TIM4_CH1IN_1
 
 #define SDIO_SLOTNO                    0  /* Only one slot */
 #define SDIO_MINOR                     0
