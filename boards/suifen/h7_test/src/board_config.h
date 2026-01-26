@@ -81,8 +81,8 @@
 
 /* LEDs are driven with push pull Anodes to 3.3V */
 
-#define GPIO_nLED_RED        /* PB1 */  (GPIO_OUTPUT|GPIO_PUSHPULL|GPIO_SPEED_50MHz|GPIO_OUTPUT_SET|GPIO_PORTB|GPIO_PIN1)
-#define GPIO_nLED_BLUE       /* PB0 */  (GPIO_OUTPUT|GPIO_PUSHPULL|GPIO_SPEED_50MHz|GPIO_OUTPUT_SET|GPIO_PORTB|GPIO_PIN0)
+#define GPIO_nLED_RED        /* PA1 */  (GPIO_OUTPUT|GPIO_PUSHPULL|GPIO_SPEED_50MHz|GPIO_OUTPUT_SET|GPIO_PORTA|GPIO_PIN1)
+#define GPIO_nLED_BLUE       /* PE4 */  (GPIO_OUTPUT|GPIO_PUSHPULL|GPIO_SPEED_50MHz|GPIO_OUTPUT_SET|GPIO_PORTE|GPIO_PIN4)
 
 #define BOARD_HAS_CONTROL_STATUS_LEDS      1
 #define BOARD_OVERLOAD_LED     LED_RED
@@ -211,10 +211,10 @@
 #define HRT_TIMER               8  /* use timer8 for the HRT */
 #define HRT_TIMER_CHANNEL       3  /* use capture/compare channel 3 */
 
-/* PWM input driver. Use FMU AUX5 pins attached to timer4 channel 1 */
-#define PWMIN_TIMER                       4
-#define PWMIN_TIMER_CHANNEL    /* T4C1 */ 1
-#define GPIO_PWM_IN            /* PB6 */  GPIO_TIM4_CH1IN_1
+/* PWM input driver. Use FMU AUX5 pins attached to timer5 channel 1 */
+#define PWMIN_TIMER                       5
+#define PWMIN_TIMER_CHANNEL    /* T5C1 */ 1
+#define GPIO_PWM_IN            /* PA0 */  GPIO_TIM5_CH1IN_1
 
 #define SDIO_SLOTNO                    0  /* Only one slot */
 #define SDIO_MINOR                     0
