@@ -139,22 +139,23 @@
 #define BOARD_ADC_OPEN_CIRCUIT_V     (5.6f)
 
 /* HW Version and Revision drive signals Default to 1 to detect */
-#define BOARD_HAS_HW_VERSIONING
+// #define BOARD_HAS_HW_VERSIONING
 
 #define GPIO_HW_VER_REV_DRIVE  /* PE12 */ (GPIO_OUTPUT|GPIO_PUSHPULL|GPIO_SPEED_2MHz|GPIO_OUTPUT_SET|GPIO_PORTE|GPIO_PIN12)
 #define GPIO_HW_REV_SENSE      /* PC0 */  GPIO_ADC123_INP10
 #define GPIO_HW_VER_SENSE      /* PC1 */  GPIO_ADC123_INP11
 #define HW_INFO_INIT_PREFIX    "V6C"
 
-#define BOARD_NUM_SPI_CFG_HW_VERSIONS 5 // Rev 0, 10 and Mini Sensor sets
+#define BOARD_NUM_SPI_CFG_HW_VERSIONS 1
+
 //                 Base/FMUM
-#define V6C00   HW_VER_REV(0x0,0x0) // FMUV6C,                 Rev 0  I2C4 External but with Internal devices
-#define V6C01   HW_VER_REV(0x0,0x1) // FMUV6C,                 Rev 1  I2C4 Internal I2C2 External
-#define V6C02   HW_VER_REV(0x0,0x2) // FMUV6C,                 Rev 2  I2C4 Internal I2C2 External,BMI088+ICM-42688P
-#define V6C10   HW_VER_REV(0x1,0x0) // NO PX4IO,               Rev 0  I2C4 External but with Internal devices
-#define V6C11   HW_VER_REV(0x1,0x1) // NO PX4IO,               Rev 1  I2C4 Internal I2C2 External
-#define V6C21   HW_VER_REV(0x2,0x1) // FMUV6CMini,             Rev 1  I2C4 Internal I2C2 External
-#define V6C22   HW_VER_REV(0x2,0x2) // FMUV6CMini,             Rev 2  I2C4 Internal I2C2 External,BMI088+ICM-42688P
+// #define V6C00   HW_VER_REV(0x0,0x0) // FMUV6C,                 Rev 0  I2C4 External but with Internal devices
+// #define V6C01   HW_VER_REV(0x0,0x1) // FMUV6C,                 Rev 1  I2C4 Internal I2C2 External
+// #define V6C02   HW_VER_REV(0x0,0x2) // FMUV6C,                 Rev 2  I2C4 Internal I2C2 External,BMI088+ICM-42688P
+// #define V6C10   HW_VER_REV(0x1,0x0) // NO PX4IO,               Rev 0  I2C4 External but with Internal devices
+// #define V6C11   HW_VER_REV(0x1,0x1) // NO PX4IO,               Rev 1  I2C4 Internal I2C2 External
+// #define V6C21   HW_VER_REV(0x2,0x1) // FMUV6CMini,             Rev 1  I2C4 Internal I2C2 External
+// #define V6C22   HW_VER_REV(0x2,0x2) // FMUV6CMini,             Rev 2  I2C4 Internal I2C2 External,BMI088+ICM-42688P
 
 /* HEATER
  * PWM in future
@@ -183,13 +184,13 @@
 #define GPIO_VDD_5V_PERIPH_nOC          /* PE3  */ (GPIO_INPUT |GPIO_FLOAT|GPIO_PORTE|GPIO_PIN3)
 // #define GPIO_VDD_5V_HIPOWER_nEN         /* PC10 */ (GPIO_OUTPUT|GPIO_PUSHPULL|GPIO_SPEED_2MHz|GPIO_OUTPUT_SET|GPIO_PORTC|GPIO_PIN10)
 // #define GPIO_VDD_5V_HIPOWER_nOC         /* PC11 */ (GPIO_INPUT |GPIO_FLOAT|GPIO_PORTC|GPIO_PIN11)
-#define GPIO_VDD_3V3_SENSORS_EN         /* PB2  */ (GPIO_OUTPUT|GPIO_PUSHPULL|GPIO_SPEED_2MHz|GPIO_OUTPUT_CLEAR|GPIO_PORTB|GPIO_PIN2)
+// #define GPIO_VDD_3V3_SENSORS_EN         /* PB2  */ (GPIO_OUTPUT|GPIO_PUSHPULL|GPIO_SPEED_2MHz|GPIO_OUTPUT_CLEAR|GPIO_PORTB|GPIO_PIN2)
 
 /* Define True logic Power Control in arch agnostic form */
 
 #define VDD_5V_PERIPH_EN(on_true)          px4_arch_gpiowrite(GPIO_VDD_5V_PERIPH_nEN, !(on_true))
 #define VDD_5V_HIPOWER_EN(on_true)         /* px4_arch_gpiowrite(GPIO_VDD_5V_HIPOWER_nEN, !(on_true)) */ ((void)0)
-#define VDD_3V3_SENSORS_EN(on_true)       px4_arch_gpiowrite(GPIO_VDD_3V3_SENSORS4_EN, (on_true))
+#define VDD_3V3_SENSORS_EN(on_true)       /* px4_arch_gpiowrite(GPIO_VDD_3V3_SENSORS_EN, (on_true)) */ ((void)0)
 
 /* Tone alarm output */
 
@@ -271,7 +272,7 @@
 		GPIO_VDD_5V_PERIPH_nOC,           \
 		/* GPIO_VDD_5V_HIPOWER_nEN, */          \
 		/* GPIO_VDD_5V_HIPOWER_nOC, */          \
-		GPIO_VDD_3V3_SENSORS_EN,          \
+		/* GPIO_VDD_3V3_SENSORS_EN, */          \
 		GPIO_TONE_ALARM_IDLE,             \
 	}
 
