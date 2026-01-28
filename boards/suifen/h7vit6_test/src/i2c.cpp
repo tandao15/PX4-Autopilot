@@ -41,5 +41,6 @@ constexpr px4_i2c_bus_t px4_i2c_buses[I2C_BUS_MAX_BUS_ITEMS] = {
 
 bool px4_i2c_device_external(const uint32_t device_id)
 {
+
 	return true;
 }

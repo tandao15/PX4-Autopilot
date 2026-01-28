@@ -143,11 +143,9 @@
 #define V6C00   0x00000000 // Base version (HW_VER_REV(0,0))
 // ... other versions removed/ignored
 
-/* HEATER
+/* HEATER（加热器）
  * PWM in future
  */
-#define GPIO_HEATER_OUTPUT   /* PB9  T17CH1 - Disabled due to I2C1 Conflict */ 0
-#define HEATER_OUTPUT_EN(on_true)	       /* px4_arch_gpiowrite(GPIO_HEATER_OUTPUT, (on_true)) */
 
 /* PWM
  */
@@ -177,13 +175,9 @@
 #define VDD_5V_HIPOWER_EN(on_true)         /* px4_arch_gpiowrite(GPIO_VDD_5V_HIPOWER_nEN, !(on_true)) */
 #define VDD_3V3_SENSORS_EN(on_true)        /* px4_arch_gpiowrite(GPIO_VDD_3V3_SENSORS_EN, (on_true)) */
 
-/* Tone alarm output - DISABLED (no buzzer on this board) */
+/* Tone alarm(蜂鸣器) output - DISABLED (no buzzer on this board) */
 
-#undef TONE_ALARM_TIMER
-#undef TONE_ALARM_CHANNEL
-#undef GPIO_BUZZER_1
-#undef GPIO_TONE_ALARM_IDLE
-#undef GPIO_TONE_ALARM
+
 
 /* USB OTG FS
  *
@@ -192,13 +186,15 @@
 #define GPIO_OTGFS_VBUS         /* PA9 */ (GPIO_INPUT|GPIO_PULLDOWN|GPIO_SPEED_100MHz|GPIO_PORTA|GPIO_PIN9)
 
 /* High-resolution timer */
-#define HRT_TIMER               5  /* use timer5 for the HRT */
+#define HRT_TIMER               3  /* use timer3 for the HRT */
 #define HRT_TIMER_CHANNEL       3  /* use capture/compare channel 3 */
 
 /* PWM input driver. Use FMU AUX5 pins attached to timer4 channel 3 */
+/* CONFLICT: TIM4_CH3 is used for Motor 7 in timer_config.cpp
 #define PWMIN_TIMER                       4
-#define PWMIN_TIMER_CHANNEL    /* T4C3 */ 3
-#define GPIO_PWM_IN            /* PD14 */ GPIO_TIM4_CH3IN_2
+#define PWMIN_TIMER_CHANNEL     3
+#define GPIO_PWM_IN             GPIO_TIM4_CH3IN_2
+*/
 
 #define SDIO_SLOTNO                    0  /* Only one slot */
 #define SDIO_MINOR                     0
@@ -250,7 +246,6 @@
     GPIO_CAN1_RX,                     \
     GPIO_CAN2_TX,                     \
     GPIO_CAN2_RX,                     \
-    GPIO_HEATER_OUTPUT,               \
     GPIO_nPOWER_IN_A,                 \
     GPIO_nPOWER_IN_C,                 \
     GPIO_VDD_5V_PERIPH_nOC,           \
