@@ -35,55 +35,56 @@
 #include <drivers/drv_sensor.h>
 #include <nuttx/spi/spi.h>
 
+// Fixed according to actual hardware pinout (软硬件接口.md)
 constexpr px4_spi_bus_all_hw_t px4_spi_buses_all_hw[BOARD_NUM_SPI_CFG_HW_VERSIONS] = {
 	initSPIHWVersion(V6C00, {
 		initSPIBus(SPI::Bus::SPI1, {
-			initSPIDevice(DRV_GYR_DEVTYPE_BMI088,  SPI::CS{GPIO::PortH, GPIO::Pin2}, SPI::DRDY{GPIO::PortE, GPIO::Pin5}),
-			initSPIDevice(DRV_ACC_DEVTYPE_BMI088,  SPI::CS{GPIO::PortH, GPIO::Pin3}, SPI::DRDY{GPIO::PortE, GPIO::Pin4}),
-			initSPIDevice(DRV_IMU_DEVTYPE_ICM42688P, SPI::CS{GPIO::PortC, GPIO::Pin13}, SPI::DRDY{GPIO::PortE, GPIO::Pin6}),
+			initSPIDevice(DRV_GYR_DEVTYPE_BMI088,  SPI::CS{GPIO::PortC, GPIO::Pin4}, SPI::DRDY{GPIO::PortB, GPIO::Pin1}),  // Gyro: CS=PC4, INT=PB1
+			initSPIDevice(DRV_ACC_DEVTYPE_BMI088,  SPI::CS{GPIO::PortA, GPIO::Pin4}, SPI::DRDY{GPIO::PortB, GPIO::Pin0}),  // Accel: CS=PA4, INT=PB0
+			initSPIDevice(DRV_IMU_DEVTYPE_ICM42688P, SPI::CS{GPIO::PortA, GPIO::Pin15}, SPI::DRDY{GPIO::PortD, GPIO::Pin4}), // ICM: CS=PA15, INT=PD4
 		}, {GPIO::PortB, GPIO::Pin2}),
 		initSPIBus(SPI::Bus::SPI2, {
-			initSPIDevice(SPIDEV_FLASH(0), SPI::CS{GPIO::PortD, GPIO::Pin4})
+			initSPIDevice(SPIDEV_FLASH(0), SPI::CS{GPIO::PortB, GPIO::Pin11})  // FRAM: CS=PB11
 		}),
 	}),
-	initSPIHWVersion(V6C00, {
+	initSPIHWVersion(V6C01, {
 		initSPIBus(SPI::Bus::SPI1, {
-			initSPIDevice(DRV_GYR_DEVTYPE_BMI088,  SPI::CS{GPIO::PortH, GPIO::Pin2}, SPI::DRDY{GPIO::PortE, GPIO::Pin5}), // Gyro PH2
-			initSPIDevice(DRV_ACC_DEVTYPE_BMI088,  SPI::CS{GPIO::PortH, GPIO::Pin3}, SPI::DRDY{GPIO::PortE, GPIO::Pin4}), // Accel PH3
-			initSPIDevice(DRV_IMU_DEVTYPE_ICM42688P, SPI::CS{GPIO::PortC, GPIO::Pin13}, SPI::DRDY{GPIO::PortE, GPIO::Pin6}),
+			initSPIDevice(DRV_GYR_DEVTYPE_BMI088,  SPI::CS{GPIO::PortC, GPIO::Pin4}, SPI::DRDY{GPIO::PortB, GPIO::Pin1}),  // Gyro: CS=PC4, INT=PB1
+			initSPIDevice(DRV_ACC_DEVTYPE_BMI088,  SPI::CS{GPIO::PortA, GPIO::Pin4}, SPI::DRDY{GPIO::PortB, GPIO::Pin0}),  // Accel: CS=PA4, INT=PB0
+			initSPIDevice(DRV_IMU_DEVTYPE_ICM42688P, SPI::CS{GPIO::PortA, GPIO::Pin15}, SPI::DRDY{GPIO::PortD, GPIO::Pin4}), // ICM: CS=PA15, INT=PD4
 		}, {GPIO::PortB, GPIO::Pin2}),
 		initSPIBus(SPI::Bus::SPI2, {
-			initSPIDevice(SPIDEV_FLASH(0), SPI::CS{GPIO::PortD, GPIO::Pin4})
+			initSPIDevice(SPIDEV_FLASH(0), SPI::CS{GPIO::PortB, GPIO::Pin11})  // FRAM: CS=PB11
 		}),
 	}),
 	initSPIHWVersion(V6C02, {
 		initSPIBus(SPI::Bus::SPI1, {
-			initSPIDevice(DRV_GYR_DEVTYPE_BMI088,  SPI::CS{GPIO::PortH, GPIO::Pin2}, SPI::DRDY{GPIO::PortE, GPIO::Pin5}),
-			initSPIDevice(DRV_ACC_DEVTYPE_BMI088,  SPI::CS{GPIO::PortH, GPIO::Pin3}, SPI::DRDY{GPIO::PortE, GPIO::Pin4}),
-			initSPIDevice(DRV_IMU_DEVTYPE_ICM42688P, SPI::CS{GPIO::PortC, GPIO::Pin13}, SPI::DRDY{GPIO::PortE, GPIO::Pin6}),
+			initSPIDevice(DRV_GYR_DEVTYPE_BMI088,  SPI::CS{GPIO::PortC, GPIO::Pin4}, SPI::DRDY{GPIO::PortB, GPIO::Pin1}),  // Gyro: CS=PC4, INT=PB1
+			initSPIDevice(DRV_ACC_DEVTYPE_BMI088,  SPI::CS{GPIO::PortA, GPIO::Pin4}, SPI::DRDY{GPIO::PortB, GPIO::Pin0}),  // Accel: CS=PA4, INT=PB0
+			initSPIDevice(DRV_IMU_DEVTYPE_ICM42688P, SPI::CS{GPIO::PortA, GPIO::Pin15}, SPI::DRDY{GPIO::PortD, GPIO::Pin4}), // ICM: CS=PA15, INT=PD4
 		}, {GPIO::PortB, GPIO::Pin2}),
 		initSPIBus(SPI::Bus::SPI2, {
-			initSPIDevice(SPIDEV_FLASH(0), SPI::CS{GPIO::PortD, GPIO::Pin4})
+			initSPIDevice(SPIDEV_FLASH(0), SPI::CS{GPIO::PortB, GPIO::Pin11})  // FRAM: CS=PB11
 		}),
 	}),
 	initSPIHWVersion(V6C21, {
 		initSPIBus(SPI::Bus::SPI1, {
-			initSPIDevice(DRV_GYR_DEVTYPE_BMI055,  SPI::CS{GPIO::PortH, GPIO::Pin2}, SPI::DRDY{GPIO::PortE, GPIO::Pin5}),
-			initSPIDevice(DRV_ACC_DEVTYPE_BMI055,  SPI::CS{GPIO::PortH, GPIO::Pin3}, SPI::DRDY{GPIO::PortE, GPIO::Pin4}),
-			initSPIDevice(DRV_IMU_DEVTYPE_ICM42688P, SPI::CS{GPIO::PortC, GPIO::Pin13}, SPI::DRDY{GPIO::PortE, GPIO::Pin6}),
+			initSPIDevice(DRV_GYR_DEVTYPE_BMI055,  SPI::CS{GPIO::PortC, GPIO::Pin4}, SPI::DRDY{GPIO::PortB, GPIO::Pin1}),  // Gyro: CS=PC4, INT=PB1
+			initSPIDevice(DRV_ACC_DEVTYPE_BMI055,  SPI::CS{GPIO::PortA, GPIO::Pin4}, SPI::DRDY{GPIO::PortB, GPIO::Pin0}),  // Accel: CS=PA4, INT=PB0
+			initSPIDevice(DRV_IMU_DEVTYPE_ICM42688P, SPI::CS{GPIO::PortA, GPIO::Pin15}, SPI::DRDY{GPIO::PortD, GPIO::Pin4}), // ICM: CS=PA15, INT=PD4
 		}, {GPIO::PortB, GPIO::Pin2}),
 		initSPIBus(SPI::Bus::SPI2, {
-			initSPIDevice(SPIDEV_FLASH(0), SPI::CS{GPIO::PortD, GPIO::Pin4})
+			initSPIDevice(SPIDEV_FLASH(0), SPI::CS{GPIO::PortB, GPIO::Pin11})  // FRAM: CS=PB11
 		}),
 	}),
 	initSPIHWVersion(V6C22, {
 		initSPIBus(SPI::Bus::SPI1, {
-			initSPIDevice(DRV_GYR_DEVTYPE_BMI088,  SPI::CS{GPIO::PortH, GPIO::Pin2}, SPI::DRDY{GPIO::PortE, GPIO::Pin5}),
-			initSPIDevice(DRV_ACC_DEVTYPE_BMI088,  SPI::CS{GPIO::PortH, GPIO::Pin3}, SPI::DRDY{GPIO::PortE, GPIO::Pin4}),
-			initSPIDevice(DRV_IMU_DEVTYPE_ICM42688P, SPI::CS{GPIO::PortC, GPIO::Pin13}, SPI::DRDY{GPIO::PortE, GPIO::Pin6}),
+			initSPIDevice(DRV_GYR_DEVTYPE_BMI088,  SPI::CS{GPIO::PortC, GPIO::Pin4}, SPI::DRDY{GPIO::PortB, GPIO::Pin1}),  // Gyro: CS=PC4, INT=PB1
+			initSPIDevice(DRV_ACC_DEVTYPE_BMI088,  SPI::CS{GPIO::PortA, GPIO::Pin4}, SPI::DRDY{GPIO::PortB, GPIO::Pin0}),  // Accel: CS=PA4, INT=PB0
+			initSPIDevice(DRV_IMU_DEVTYPE_ICM42688P, SPI::CS{GPIO::PortA, GPIO::Pin15}, SPI::DRDY{GPIO::PortD, GPIO::Pin4}), // ICM: CS=PA15, INT=PD4
 		}, {GPIO::PortB, GPIO::Pin2}),
 		initSPIBus(SPI::Bus::SPI2, {
-			initSPIDevice(SPIDEV_FLASH(0), SPI::CS{GPIO::PortD, GPIO::Pin4})
+			initSPIDevice(SPIDEV_FLASH(0), SPI::CS{GPIO::PortB, GPIO::Pin11})  // FRAM: CS=PB11
 		}),
 	}),
 };
