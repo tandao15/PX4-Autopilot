@@ -33,3 +33,15 @@ param set-default BAT2_V_DIV 18.1
 
 param set-default BAT1_A_PER_V 36.367515152
 param set-default BAT2_A_PER_V 36.367515152
+
+# # MAVLink 配置
+# # MAV_0_CONFIG (Telem 1) -> /dev/ttyS5
+# param set-default MAV_0_CONFIG 102
+# param set-default MAV_0_MODE 0
+
+# # MAV_1_CONFIG (Telem 2) -> /dev/ttyS3 (常用于机载计算机)
+# param set-default MAV_1_CONFIG 101
+# param set-default MAV_1_MODE 2
+
+# XRCE-DDS (ROS2) 配置 - 如果使用 ROS2，取消注释并设置端口
+# param set-default UXRCE_DDS_CFG 103  # Use TEL3 (/dev/ttyS1)
